@@ -27,6 +27,13 @@ client.connect();
 // });
 
 client.on("message", (channel, tags, message, self) => {
+  if (self) {
+    return;
+  }
+
+  if (message === "Baseg") {
+    client.say(channel, "Baseg");
+  }
   // if(self || !message.startsWith('!')) {
   //   return;
   // }
@@ -42,14 +49,6 @@ client.on("message", (channel, tags, message, self) => {
   //     client.say(channel, `@${tags.username}, ${await generator.generate(prompt)}`);
   //   })();
   // }
-
-  if (self) {
-    return;
-  }
-
-  if (message === "Baseg") {
-    client.say(channel, "Baseg");
-  }
 });
 
 // (async () => {
