@@ -1,5 +1,6 @@
 // const generator = require("./textGenerator");
 require("dotenv").config();
+const tmi = require("tmi.js");
 
 // const reputation ={};
 const client = new tmi.Client({
@@ -41,7 +42,10 @@ client.on("message", (channel, tags, message, self) => {
   //     client.say(channel, `@${tags.username}, ${await generator.generate(prompt)}`);
   //   })();
   // }
-  if (self) return;
+
+  if (self) {
+    return;
+  }
 
   if (message === "Baseg") {
     client.say(channel, "Baseg");
