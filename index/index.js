@@ -1,5 +1,5 @@
-const generator = require("./textGenerator");
-const tmi = require("tmi.js");
+// const generator = require("./textGenerator");
+require("dotenv").config();
 
 // const reputation ={};
 const client = new tmi.Client({
@@ -8,10 +8,10 @@ const client = new tmi.Client({
     secure: true,
     reconnect: true,
   },
-    identity: {
-      username: 'taurediano',
-      password: process.env.TWITCH_OAUTH_TOKEN
-    },
+  identity: {
+    username: "taurediano",
+    password: process.env.TWITCH_OAUTH_TOKEN,
+  },
   channels: ["taurediano"],
 });
 
@@ -21,8 +21,8 @@ client.connect();
 //   connection.sendUTF(
 //     "CAP REQ :twitch.tv/membership twitch.tv/tags twitch.tv/commands"
 //   );
-//   connection.sendUTF(`PASS ${env.TWITCH_OAUTH_TOKEN}`);
 //   connection.sendUTF("NICK taurediano");
+//   connection.sendUTF(`PASS ${env.TWITCH_OAUTH_TOKEN}`);
 // });
 
 client.on("message", (channel, tags, message, self) => {
@@ -43,8 +43,8 @@ client.on("message", (channel, tags, message, self) => {
   // }
   if (self) return;
 
-  if (message.toLowerCase() === "!hello") {
-    client.say(channel, `@${tags.username}, Yo what's up`);
+  if (message === "Baseg") {
+    client.say(channel, "Baseg");
   }
 });
 
