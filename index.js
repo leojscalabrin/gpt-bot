@@ -34,21 +34,10 @@ client.on("message", (channel, tags, message, self) => {
   if (message === "Baseg") {
     client.say(channel, "Baseg");
   }
-  // if(self || !message.startsWith('!')) {
-  //   return;
-  // }
-
-  // const args = message.slice(1).split(' ');
-  // const command = args.shift().toLowerCase();
-
-  // if(command === 'Baseg') {
-  //   client.say(channel, 'pau');
-  // } else if(command === 'taurediano' || '@taurediano') {
-  //   (async () => {
-  //     const prompt = args.join(' ');
-  //     client.say(channel, `@${tags.username}, ${await generator.generate(prompt)}`);
-  //   })();
-  // }
+  
+  if(message.toLowerCase() === 'taurediano' || '@taurediano') {
+    client.say(channel, `@${tags.username}, Baseg`);
+  }
 });
 
 // (async () => {
