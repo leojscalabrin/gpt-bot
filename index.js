@@ -13,7 +13,8 @@ const client = new tmi.Client({
     username: "taurediano",
     password: process.env.TWITCH_OAUTH_TOKEN,
   },
-  channels: ["taurediano", "k1notv", "themalkavianx", "granjas", "bard0oo0", "blacksmith_god", "marjoux", "xparchon", "zeszin"],
+  // channels: ["taurediano", "k1notv", "themalkavianx", "granjas", "bard0oo0", "blacksmith_god", "marjoux", "xparchon", "zeszin"],
+  channels: ["taurediano"]
 });
 
 client.connect();
@@ -31,13 +32,24 @@ client.on("message", (channel, tags, message, self) => {
     return;
   }
 
-  if (message === "Baseg") {
+  let command = message.toLowerCase()
+  console.log(command, "command")
+
+  if (command.includes('baseg')) {
     client.say(channel, "Baseg");
   }
-  
-  if(message.toLowerCase() === 'taurediano' || '@taurediano') {
+
+  if (command.includes('taurediano')) {
     client.say(channel, `@${tags.username}, Baseg`);
   }
+  
+  // if(message === 'taurediano' || '@taurediano') {
+  //   client.say(channel, `@${tags.username}, Baseg`);
+    // (async () => {
+    //   const prompt = args.join('Você só responde unicamente com a palavra "Baseg"');
+    //   client.say(channel, `@${tags.username}, ${await generator.generate(prompt)}`);
+    // })();
+  // }
 });
 
 // (async () => {
