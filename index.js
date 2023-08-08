@@ -1,8 +1,8 @@
-// const generator = require("./textGenerator");
+const generator = require("./textGenerator");
 require("dotenv").config();
 const tmi = require("tmi.js");
 
-// const reputation ={};
+const reputation ={};
 const client = new tmi.Client({
   options: { debug: true },
   connection: {
@@ -19,14 +19,6 @@ const client = new tmi.Client({
 
 client.connect();
 
-// client.on("connect", function (connection) {
-//   connection.sendUTF(
-//     "CAP REQ :twitch.tv/membership twitch.tv/tags twitch.tv/commands"
-//   );
-//   connection.sendUTF("NICK taurediano");
-//   connection.sendUTF(`PASS ${env.TWITCH_OAUTH_TOKEN}`);
-// });
-
 client.on("message", (channel, tags, message, self) => {
   if (self) {
     return;
@@ -40,22 +32,9 @@ client.on("message", (channel, tags, message, self) => {
   }
 
   if (command.includes('taurediano')) {
-    client.say(channel, `@${tags.username}, Baseg`);
+    (async () => {
+        const prompt = 'Você só responde unicamente com a palavra "Baseg"';
+        client.say(channel, `@${tags.username}, ${await generator.generate(prompt)}`);
+      })();
   }
-  
-  // if(message === 'taurediano' || '@taurediano') {
-  //   client.say(channel, `@${tags.username}, Baseg`);
-    // (async () => {
-    //   const prompt = args.join('Você só responde unicamente com a palavra "Baseg"');
-    //   client.say(channel, `@${tags.username}, ${await generator.generate(prompt)}`);
-    // })();
-  // }
 });
-
-// (async () => {
-//   try {
-//     console.log(await generator.generate(`Artist: Megadeth\n\nLyrics:\n`));
-//   } catch (err) {
-//     console.log(err);
-//   }
-// })();
