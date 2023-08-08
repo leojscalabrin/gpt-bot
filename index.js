@@ -33,8 +33,7 @@ client.on("message", (channel, tags, message, self) => {
 
   if (command.includes('taurediano')) {
     (async () => {
-        const prompt = 'Você só responde unicamente com a palavra "Baseg"';
-        client.say(channel, `@${tags.username}, ${await generator.generate(prompt)}`);
+        client.say(channel, `@${tags.username}, ${await generator.generate(command)}`);
       })();
   }
 });

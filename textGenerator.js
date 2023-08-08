@@ -1,8 +1,9 @@
+require("dotenv").config()
 const got = require('got');
-require('dotenv').config()
 
-async function generate(prompt) {
+async function generate(question) {
   const url = 'https://api.openai.com/v1/engines/davinci/completions';
+  const prompt = `Baseg ${question}`
   const params = {
     "prompt": prompt,
     "max_tokens": 160,
@@ -10,7 +11,7 @@ async function generate(prompt) {
     "frequency_penalty": 0.5
   };
   const headers = {
-    'Authorization': `Bearer ${process.env.OPENAI_SECRET_KEY}`,
+    'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
   };
 
   const response = await got.post(url, { json: params, headers: headers }).json();
