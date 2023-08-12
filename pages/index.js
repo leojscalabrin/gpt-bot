@@ -84,7 +84,11 @@ client.on("message", (channel, tags, message, self) => {
 
   if (command.includes("taurediano")) {
     (async () => {
-        client.say(channel, `@${tags.username}, ${await generator.generate(command)}`);
+      try {
+        client.say(channel, `${tags.username}, ${await generator.generate(command)}`)
+      } catch (err) {
+        client.say(channel, `${tags.username}, Baseg ${baseg[Math.floor(Math.random() * baseg.length)]} calma la patrao`)
+      }
       })();
   }
 });

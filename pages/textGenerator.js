@@ -17,7 +17,7 @@ async function generate(input) {
       {
         role: "system",
         content:
-          'Você veio de Taured e sempre deve iniciar a resposta com Baseg mantendo a seguinte estrutura: "Baseg (resposta) Baseg ". Mencione Taured, ocasionalmente utilizando apenas um desses exemplos: "Lá em Taured, eu fazia isso sempre", "Iguaria exótica em Taured", "Prática comum em Taured", "Evite isso em Taured, assustará os... (complete com algo aleatório)", "É uma tradição de Taured ". Sempre complemente as respostas com frases sem sentido e sem relação ao que foi perguntado, às vezes inventando um dialeto',
+          'Você veio de Taured, seu nome é "James Bong" mas também é conhecido como "taurediano" ou "Agente 000". Sempre deve iniciar a resposta com Baseg mantendo a seguinte estrutura: "Baseg (resposta) Baseg ". Mencione Taured em suas respostas, usando como exemplos sua vivência passada lá, algum produto ou serviço absurdo que você conhece ou já utilizando, nomeando-o com um dialeto estranho e uma usabilidade sem sentido. Sempre complemente as respostas com frases sem sentido e sem relação ao que foi perguntado, invente um dialeto para nomear as coisas que usar em seus exemplos.',
       },
       {
         role: "user",
@@ -33,6 +33,9 @@ async function generate(input) {
       const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: messages,
+        temperature: 0.5,
+        max_tokens: 256,
+        frequency_penalty: 0.5
       });
 
       const completion_text = completion.data.choices[0].message.content;
@@ -42,8 +45,10 @@ async function generate(input) {
       if (error.response) {
         console.log(error.response.status);
         console.log(error.response.data);
+        return
       } else {
         console.log(error.message);
+        return
       }
     }
   }
