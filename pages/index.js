@@ -1,7 +1,7 @@
 const generator = require("./textGenerator");
 require("dotenv").config({ path: "../.env" });
 const tmi = require("tmi.js");
-
+//login na twitch e join nos canais
 const client = new tmi.Client({
   options: { debug: true },
   connection: {
@@ -28,6 +28,7 @@ const client = new tmi.Client({
 
 client.connect();
 
+//roda sempre que uma mensagem for enviada no chat
 client.on("message", (channel, tags, message, self) => {
   if (self) {
     return;
@@ -70,22 +71,27 @@ client.on("message", (channel, tags, message, self) => {
     "🤝",
     "💅",
     "🦾",
-    "Parabéns! Você encontrou um BASEG SHINY, você não ganhou absolutamente nada. BloodTrail ",
+    "Parabens! Voce encontrou um BASEG SHINY, voce nao ganhou absolutamente nada. BloodTrail ",
   ];
+  const diceNumbers = ["1", "2", "3", "4", "5", "6"]
 
-  let command = message.toLowerCase();
+  let $message = message.toLowerCase();
 
-  if (command.includes("baseg")) {
+  if ($message === "!dice") {
+    client.say(channel, `Baseg 🎲 ${Math.floor(Math.random() *diceNumbers.length)}`)
+  }
+
+  if ($message.includes("baseg")) {
     client.say(
       channel,
       `Baseg ${baseg[Math.floor(Math.random() * baseg.length)]}`
     );
   }
 
-  if (command.includes("taurediano")) {
+  if ($message.includes("taurediano")) {
     (async () => {
       try {
-        client.say(channel, `${tags.username}, ${await generator.generate(command)}`)
+        client.say(channel, `${tags.username}, ${await generator.generate($message)}`)
       } catch (err) {
         client.say(channel, `${tags.username}, Baseg ${baseg[Math.floor(Math.random() * baseg.length)]} calma la patrao`)
       }
