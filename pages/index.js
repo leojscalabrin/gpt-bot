@@ -88,7 +88,7 @@ client.on("message", (channel, tags, message, self) => {
     );
   }
 
-  if ($message.includes("taurediano")) {
+  if ($message.includes("@taurediano")) {
     (async () => {
       try {
         client.say(channel, `${tags.username}, ${await generator.generate($message)}`)
