@@ -73,28 +73,54 @@ client.on("message", (channel, tags, message, self) => {
     "🦾",
     "Parabens! Voce encontrou um BASEG SHINY, voce nao ganhou absolutamente nada. BloodTrail ",
   ];
-  const diceNumbers = ["1", "2", "3", "4", "5", "6"]
+  const diceNumbers = ["1", "2", "3", "4", "5", "6"];
 
   let $message = message.toLowerCase();
 
   if ($message === "!dice") {
-    client.say(channel, `Baseg 🎲 ${Math.floor(Math.random() *diceNumbers.length)}`)
+    client.say(
+      channel,
+      `Baseg 🎲 ${Math.floor(Math.random() * diceNumbers.length)}`
+    );
   }
 
   if ($message.includes("baseg")) {
-    client.say(
-      channel,
-      `Baseg ${baseg[Math.floor(Math.random() * baseg.length)]}`
-    );
+    (async () => {
+      try {
+        client.say(
+          channel,
+          `Baseg ${
+            baseg[Math.floor(Math.random() * baseg.length)]
+          } ${await generator.generate(
+            "Diga apenas uma frase."
+          )} Baseg`
+        );
+      } catch (err) {
+        console.log(err);
+        client.say(
+          channel,
+          `Baseg ${baseg[Math.floor(Math.random() * baseg.length)]} Baseg`
+        );
+      }
+    })();
   }
 
   if ($message.includes("@taurediano")) {
     (async () => {
       try {
-        client.say(channel, `${tags.username}, ${await generator.generate($message)}`)
+        client.say(
+          channel,
+          `${tags.username}, Baseg ${await generator.generate($message)} Baseg`
+        );
       } catch (err) {
-        client.say(channel, `${tags.username}, Baseg ${baseg[Math.floor(Math.random() * baseg.length)]} calma la patrao`)
+        console.log(err);
+        client.say(
+          channel,
+          `${tags.username}, Baseg ${
+            baseg[Math.floor(Math.random() * baseg.length)]
+          } calma la patrao Baseg`
+        );
       }
-      })();
+    })();
   }
 });
