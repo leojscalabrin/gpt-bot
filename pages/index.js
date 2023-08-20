@@ -91,9 +91,7 @@ client.on("message", (channel, tags, message, self) => {
           channel,
           `Baseg ${
             baseg[Math.floor(Math.random() * baseg.length)]
-          } ${await generator.generate(
-            "Diga apenas uma frase."
-          )} Baseg`
+          } ${await generator.generate("Diga apenas uma frase.")} Baseg`
         );
       } catch (err) {
         console.log(err);
@@ -110,7 +108,9 @@ client.on("message", (channel, tags, message, self) => {
       try {
         client.say(
           channel,
-          `${tags.username}, Baseg ${await generator.generate($message)} Baseg`
+          `${tags.username}, EgBusiness ${await generator.generate(
+            $message
+          )} Baseg`
         );
       } catch (err) {
         console.log(err);
@@ -121,6 +121,13 @@ client.on("message", (channel, tags, message, self) => {
           } calma la patrao Baseg`
         );
       }
+    })();
+  }
+  if ($message.startsWith("salve")) {
+    (async () => {
+      `${tags.username}, EgBusiness ${await generator.generate(
+        "Tente vender um produto de taured para esta pessoa"
+      )} Baseg`;
     })();
   }
 });
