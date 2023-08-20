@@ -125,9 +125,10 @@ client.on("message", (channel, tags, message, self) => {
   }
   if ($message.startsWith("salve")) {
     (async () => {
-      `${tags.username}, EgBusiness ${await generator.generate(
-        "Tente vender um produto de taured para esta pessoa"
-      )} Baseg`;
+      client.say(channel,
+        `${tags.username}, EgBusiness ${await generator.generate(
+          "Tente vender um produto de taured para esta pessoa"
+        )} Baseg`)
     })();
   }
 });
