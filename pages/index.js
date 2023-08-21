@@ -91,7 +91,7 @@ client.on("message", (channel, tags, message, self) => {
           channel,
           `Baseg ${
             baseg[Math.floor(Math.random() * baseg.length)]
-          } ${await generator.generate("Diga apenas uma frase.")} Baseg`
+          } ${await generator.generate("Diga uma única frase e nada mais.")} Baseg`
         );
       } catch (err) {
         console.log(err);
