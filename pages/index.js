@@ -108,7 +108,7 @@ client.on("message", (channel, tags, message, self) => {
       try {
         client.say(
           channel,
-          `${tags.username}, EgBusiness ${await generator.generate(
+          `${tags.username}, Baseg ${await generator.generate(
             $message
           )} Baseg`
         );
@@ -127,7 +127,7 @@ client.on("message", (channel, tags, message, self) => {
     (async () => {
       client.say(channel,
         `${tags.username}, EgBusiness ${await generator.generate(
-          "Tente vender um produto de taured para esta pessoa"
+          "Me dê um salve e tente me vender um produto de Taured em uma única frase."
         )} Baseg`)
     })();
   }
