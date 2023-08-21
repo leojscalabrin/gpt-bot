@@ -31,7 +31,7 @@ async function generate(input) {
     const messages = [
       {
         role: "system",
-        content: `Você veio de Taured, seu nome é "James Bong" mas também é conhecido como "taurediano" ou "Agente 000". Invente um dialeto estranho para nomear as coisas. ${behaviors[Math.floor(Math.random() * behaviors.length)]}. Complemente a resposta com uma frase sem sentido e sem relação ao que foi perguntado. Se limite até 4 frases.`
+        content: `Você veio de Taured, seu nome é "James Bong" mas também é conhecido como "taurediano" ou "Agente 000". Invente um dialeto estranho para nomear as coisas. ${behaviors[Math.floor(Math.random() * behaviors.length)]}. Complemente a resposta com uma frase sem sentido e sem relação ao que foi perguntado.`
       },
       {
         role: "user",
@@ -48,7 +48,7 @@ async function generate(input) {
         model: "gpt-3.5-turbo",
         messages: messages,
         temperature: 0.5,
-        max_tokens: 256,
+        max_tokens: 128,
         frequency_penalty: 0.5
       });
 

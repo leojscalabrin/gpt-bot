@@ -12,18 +12,18 @@ const client = new tmi.Client({
     username: "taurediano",
     password: process.env.TWITCH_OAUTH_TOKEN,
   },
-  channels: [
-    "taurediano",
-    "k1notv",
-    "themalkavianx",
-    "granjas",
-    "bard0oo0",
-    "blacksmith_god",
-    "marjoux",
-    "xparchon",
-    "zeszin",
-  ],
-  // channels: ["taurediano"],
+  // channels: [
+  //   "taurediano",
+  //   "k1notv",
+  //   "themalkavianx",
+  //   "granjas",
+  //   "bard0oo0",
+  //   "blacksmith_god",
+  //   "marjoux",
+  //   "xparchon",
+  //   "zeszin",
+  // ],
+  channels: ["taurediano"],
 });
 
 client.connect();
@@ -91,7 +91,7 @@ client.on("message", (channel, tags, message, self) => {
           channel,
           `Baseg ${
             baseg[Math.floor(Math.random() * baseg.length)]
-          } ${await generator.generate("Diga uma única frase e nada mais.")} Baseg`
+          } ${await generator.generate("Diga uma frase motivacional sem sentido.")} Baseg`
         );
       } catch (err) {
         console.log(err);
