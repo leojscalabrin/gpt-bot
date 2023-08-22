@@ -19,7 +19,8 @@ async function generate(input) {
                     "Comece a resposta com 'Evite isso em Taured, você assustará os...' e complemente com sua resposta.",
                     "Comece a resposta com 'É tradição de Taured.'",
                     "Comece a resposta com 'Sou eu de novo.' e termine com 'Fica com Deus.'",
-                    "Responda em Japonês"]
+                    "Responda em Japonês",
+                    "Diga uma frase inspiracional que não faça sentido"]
 
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
