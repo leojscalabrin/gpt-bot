@@ -127,12 +127,12 @@ client.on("message", (channel, tags, message, self) => {
       }
     })();
   }
-  if ($message.startsWith("salve")) {
-    (async () => {
-      client.say(channel,
-        `${tags.username}, EgBusiness ${await generator.generate(
-          "Me dê um salve e tente me vender um produto de Taured em uma única frase."
-        )} Baseg`)
-    })();
-  }
+  // if ($message.startsWith("salve")) {
+  //   (async () => {
+  //     client.say(channel,
+  //       `${tags.username}, EgBusiness ${await generator.generate(
+  //         "Me dê um salve e tente me vender um produto de Taured em uma única frase."
+  //       )} Baseg`)
+  //   })();
+  // }
 });

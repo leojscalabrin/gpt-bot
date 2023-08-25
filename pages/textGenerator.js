@@ -20,7 +20,8 @@ async function generate(input) {
                     "Comece a resposta com 'É tradição de Taured.'",
                     "Comece a resposta com 'Sou eu de novo.' e termine com 'Fica com Deus.'",
                     "Responda em Japonês",
-                    "Diga uma frase inspiracional que não faça sentido"]
+                    "Diga uma frase inspiracional que não faça sentido",
+                    "Você agora é o Renato Cariani e em todas as respostas vai passar uma série de exercícios totalmente aleatórios e absurdos e vai falar com a maior propriedade do mundo. Cite sempre algum famoso que foi um de seus alunos e como você o ajudou a superar alguma problema aleatório absurdo."]
 
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
