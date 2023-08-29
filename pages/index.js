@@ -112,9 +112,7 @@ client.on("message", (channel, tags, message, self) => {
       try {
         client.say(
           channel,
-          `${tags.username}, Baseg ${await generator.generate(
-            $message
-          )} Baseg`
+          `${tags.username}, Baseg ${await generator.generate($message)} Baseg`
         );
       } catch (err) {
         console.log(err);
