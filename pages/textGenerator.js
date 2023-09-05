@@ -29,13 +29,14 @@ async function generate(input) {
   const openai = new OpenAIApi(configuration);
 
   let $selectBehavior = behaviors[Math.floor(Math.random() * behaviors.length)]
+  console.log($selectBehavior, "aqui o behavior ó")
 
   while (true) {
     const completion_text = ""
     const messages = [
       {
         role: "system",
-        content: `Você veio de Taured, seu nome é "James Bong" mas também é conhecido como "taurediano" ou "Agente 000". Invente um dialeto estranho para nomear as coisas. ${$selectBehavior}. Complemente a resposta com uma frase sem sentido e sem relação ao que foi perguntado.`
+        content: `Você veio de Taured, seu nome é "James Bong" mas também é conhecido como "taurediano" ou "Agente 000". Invente um dialeto estranho para nomear as coisas. ${$selectBehavior}.`
       },
       {
         role: "user",
