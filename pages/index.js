@@ -1,4 +1,5 @@
 const generator = require("./textGenerator");
+const { pokeApi } = require("./poke-api.js");
 require("dotenv").config({ path: "../.env" });
 const tmi = require("tmi.js");
 //login na twitch e join nos canais
@@ -12,18 +13,18 @@ const client = new tmi.Client({
     username: "taurediano",
     password: process.env.TWITCH_OAUTH_TOKEN,
   },
-  channels: [
-    "taurediano",
-    "k1notv",
-    "themalkavianx",
-    "granjas",
-    "bard0oo0",
-    "blacksmith_god",
-    "marjoux",
-    "xparchon",
-    "zeszin",
-  ],
-  // channels: ["taurediano"],
+  // channels: [
+  //   "taurediano",
+  //   "k1notv",
+  //   "themalkavianx",
+  //   "granjas",
+  //   "bard0oo0",
+  //   "blacksmith_god",
+  //   "marjoux",
+  //   "xparchon",
+  //   "zeszin",
+  // ],
+  channels: ["taurediano"],
 });
 
 client.connect();
@@ -76,6 +77,13 @@ client.on("message", (channel, tags, message, self) => {
   const diceNumbers = ["1", "2", "3", "4", "5", "6"];
 
   let $message = message.toLowerCase();
+  function msgSplit(msg) {
+    const splitMsg = $message.split(" ");
+    splitMsg.shift();
+    const newMessage = splitMsg.join(" ");
+
+    return newMessage;
+  }
 
   if ($message === "!dice") {
     client.say(
@@ -85,22 +93,6 @@ client.on("message", (channel, tags, message, self) => {
   }
 
   if ($message.includes("baseg")) {
-    // (async () => {
-    //   try {
-    //     client.say(
-    //       channel,
-    //       `Baseg ${
-    //         baseg[Math.floor(Math.random() * baseg.length)]
-    //       } ${await generator.generate("Diga uma frase motivacional sem sentido.")} Baseg`
-    //     );
-    //   } catch (err) {
-    //     console.log(err);
-    //     client.say(
-    //       channel,
-    //       `Baseg ${baseg[Math.floor(Math.random() * baseg.length)]} Baseg`
-    //     );
-    //   }
-    // })();
     client.say(
       channel,
       `Baseg ${baseg[Math.floor(Math.random() * baseg.length)]}`
@@ -125,12 +117,33 @@ client.on("message", (channel, tags, message, self) => {
       }
     })();
   }
-  // if ($message.startsWith("salve")) {
-  //   (async () => {
-  //     client.say(channel,
-  //       `${tags.username}, EgBusiness ${await generator.generate(
-  //         "Me dê um salve e tente me vender um produto de Taured em uma única frase."
-  //       )} Baseg`)
-  //   })();
-  // }
+
+  if ($message.startsWith("!pokemon")) {
+    const command = msgSplit($message);
+  
+    (async () => {
+      try {
+        const data = await pokeApi(command);
+        let types = ''
+        // console.log("Tipo:", data.types)
+        if (data.types.length >= 2 && data.types[1].type) {
+          console.log("Tipo:", data.types[0].type.name, data.types[1].type.name);
+          types = `${data.types[0].type.name} - ${data.types[1].type.name}` 
+        } else {
+          types = `${data.types[0].type.name}`
+        }
+  
+        client.say(
+          channel,
+          `${tags.username}, Baseg 👉 #${data.id} | ${data.name.toUpperCase()} | ${types}`
+        );
+      } catch (err) {
+        console.error("Erro:", err);
+        client.say(
+          channel,
+          `${tags.username}, Baseg ocorreu um erro ao buscar informações do Pokémon.`
+        );
+      }
+    })();
+  }
 });
