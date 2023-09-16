@@ -159,3 +159,7 @@ client.on("message", (channel, tags, message, self) => {
     })();
   }
 });
+
+setTimeout(() => {
+  console.log("WAKE ME UP")
+}, 600000);
