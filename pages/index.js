@@ -38,6 +38,9 @@ client.on("message", (channel, tags, message, self) => {
       return;
     }
 
+    const cooldown = 5000;
+    console.log("RODOU")
+
     const baseg = [
       "👍",
       "🔪",
@@ -94,6 +97,8 @@ client.on("message", (channel, tags, message, self) => {
         channel,
         `Baseg 🎲 ${Math.floor(Math.random() * diceNumbers.length)}`
       );
+      available = false;
+      console.log("AVAILABLE FALSE")
     }
   
     if ($message.includes("baseg")) {
@@ -101,6 +106,8 @@ client.on("message", (channel, tags, message, self) => {
         channel,
         `Baseg ${baseg[Math.floor(Math.random() * baseg.length)]}`
       );
+      available = false;
+      console.log("AVAILABLE FALSE")
     }
   
     if ($message.includes("@taurediano")) {
@@ -120,10 +127,14 @@ client.on("message", (channel, tags, message, self) => {
           );
         }
       })();
+      available = false;
+      console.log("AVAILABLE FALSE")
     }
   
     if ($message.includes("reset")) {
       client.say(channel, "Reset pepeLaugh")
+      available = false;
+      console.log("AVAILABLE FALSE")
     }
   
     if ($message.startsWith("!pokemon")) {
@@ -151,16 +162,15 @@ client.on("message", (channel, tags, message, self) => {
           );
         }
       })();
+      available = false;
+      console.log("AVAILABLE FALSE")
     }
 
-    const cooldown = 5000;
-    console.log("RODOU")
-    available = false;
-    console.log("AVAILABLE FALSE")
-
-    setTimeout(() => {
-      available = true;
-      console.log("AVAILABLE TRUE")
-    }, cooldown);
+    if (!available) {
+      setTimeout(() => {
+        available = true;
+        console.log("AVAILABLE TRUE")
+      }, cooldown);
+    }
   }
 });
