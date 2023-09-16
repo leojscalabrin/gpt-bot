@@ -160,6 +160,8 @@ client.on("message", (channel, tags, message, self) => {
   }
 });
 
-setTimeout(() => {
+function preventAFK() {
   console.log("WAKE ME UP")
-}, 600000);
+}
+
+setInterval(preventAFK, 600000)
