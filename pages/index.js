@@ -13,18 +13,18 @@ const client = new tmi.Client({
     username: "taurediano",
     password: process.env.TWITCH_OAUTH_TOKEN,
   },
-  // channels: [
-  //   "taurediano",
-  //   "k1notv",
-  //   "themalkavianx",
-  //   "granjas",
-  //   "bard0oo0",
-  //   "blacksmith_god",
-  //   "marjoux",
-  //   "xparchon",
-  //   "zeszin",
-  // ],
-  channels: ["taurediano"],
+  channels: [
+    "taurediano",
+    "k1notv",
+    "themalkavianx",
+    "granjas",
+    "bard0oo0",
+    "blacksmith_god",
+    "marjoux",
+    "xparchon",
+    "zeszin",
+  ],
+  // channels: ["taurediano"],
 });
 
 client.connect();
@@ -118,6 +118,10 @@ client.on("message", (channel, tags, message, self) => {
     })();
   }
 
+  if ($message.includes("reset")) {
+    client.say(channel, "Reset pepeLaugh")
+  }
+
   if ($message.startsWith("!pokemon")) {
     const command = msgSplit($message);
   
@@ -125,9 +129,7 @@ client.on("message", (channel, tags, message, self) => {
       try {
         const data = await pokeApi(command);
         let types = ''
-        // console.log("Tipo:", data.types)
         if (data.types.length >= 2 && data.types[1].type) {
-          console.log("Tipo:", data.types[0].type.name, data.types[1].type.name);
           types = `${data.types[0].type.name} - ${data.types[1].type.name}` 
         } else {
           types = `${data.types[0].type.name}`
