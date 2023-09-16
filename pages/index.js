@@ -106,6 +106,7 @@ client.on("message", (channel, tags, message, self) => {
             channel,
             `${tags.username}, Baseg ${await generator.generate($message)} Baseg`
           );
+          return
         } catch (err) {
           console.log(err);
           client.say(
