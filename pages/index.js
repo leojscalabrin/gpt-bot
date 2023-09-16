@@ -29,17 +29,17 @@ const client = new tmi.Client({
 
 client.connect();
 
-let available = true;
+// let available = true;
 
 //roda sempre que uma mensagem for enviada no chat
 client.on("message", (channel, tags, message, self) => {
-  if (available) {
+  // if (available) {
     if (self) {
       return;
     }
 
-    const cooldown = 5000;
-    console.log("RODOU")
+    // const cooldown = 5000;
+    // console.log("RODOU")
 
     const baseg = [
       "👍",
@@ -97,8 +97,8 @@ client.on("message", (channel, tags, message, self) => {
         channel,
         `Baseg 🎲 ${Math.floor(Math.random() * diceNumbers.length)}`
       );
-      available = false;
-      console.log("AVAILABLE FALSE")
+      // available = false;
+      // console.log("AVAILABLE FALSE")
     }
   
     if ($message.includes("baseg")) {
@@ -106,8 +106,8 @@ client.on("message", (channel, tags, message, self) => {
         channel,
         `Baseg ${baseg[Math.floor(Math.random() * baseg.length)]}`
       );
-      available = false;
-      console.log("AVAILABLE FALSE")
+      // available = false;
+      // console.log("AVAILABLE FALSE")
     }
   
     if ($message.includes("@taurediano")) {
@@ -127,14 +127,14 @@ client.on("message", (channel, tags, message, self) => {
           );
         }
       })();
-      available = false;
-      console.log("AVAILABLE FALSE")
+      // available = false;
+      // console.log("AVAILABLE FALSE")
     }
   
     if ($message.includes("reset")) {
       client.say(channel, "Reset pepeLaugh")
-      available = false;
-      console.log("AVAILABLE FALSE")
+      // available = false;
+      // console.log("AVAILABLE FALSE")
     }
   
     if ($message.startsWith("!pokemon")) {
@@ -162,15 +162,15 @@ client.on("message", (channel, tags, message, self) => {
           );
         }
       })();
-      available = false;
-      console.log("AVAILABLE FALSE")
+      // available = false;
+      // console.log("AVAILABLE FALSE")
     }
 
-    if (!available) {
-      setTimeout(() => {
-        available = true;
-        console.log("AVAILABLE TRUE")
-      }, cooldown);
-    }
-  }
+    // if (!available) {
+    //   setTimeout(() => {
+    //     available = true;
+    //     console.log("AVAILABLE TRUE")
+    //   }, cooldown);
+    // }
+  // }
 });
