@@ -90,6 +90,7 @@ client.on("message", (channel, tags, message, self) => {
       channel,
       `Baseg 🎲 ${Math.floor(Math.random() * diceNumbers.length)}`
     );
+    return
   }
 
   if ($message.includes("baseg")) {
@@ -97,6 +98,7 @@ client.on("message", (channel, tags, message, self) => {
       channel,
       `Baseg ${baseg[Math.floor(Math.random() * baseg.length)]}`
     );
+    return
   }
 
   if ($message.includes("@taurediano")) {
@@ -116,10 +118,12 @@ client.on("message", (channel, tags, message, self) => {
         );
       }
     })();
+    return
   }
 
   if ($message.includes("reset")) {
     client.say(channel, "Reset pepeLaugh")
+    return
   }
 
   if ($message.startsWith("!pokemon")) {
@@ -147,5 +151,6 @@ client.on("message", (channel, tags, message, self) => {
         );
       }
     })();
+    return
   }
 });
