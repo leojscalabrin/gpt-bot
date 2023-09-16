@@ -164,4 +164,4 @@ function preventAFK() {
   console.log("WAKE ME UP")
 }
 
-setInterval(preventAFK, 600000)
+setInterval(preventAFK, 300000)
