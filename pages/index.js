@@ -29,6 +29,8 @@ const client = new tmi.Client({
 
 client.connect();
 
+let available = true;
+
 //roda sempre que uma mensagem for enviada no chat
 client.on("message", (channel, tags, message, self) => {
     if (self) return;
@@ -99,24 +101,27 @@ client.on("message", (channel, tags, message, self) => {
       );
     }
   
-    if ($message.includes("@taurediano")) {
-      (async () => {
-        try {
-          client.say(
-            channel,
-            `${tags.username}, Baseg ${await generator.generate($message)} Baseg`
-          );
-          return
-        } catch (err) {
-          console.log(err);
-          client.say(
-            channel,
-            `${tags.username}, Baseg ${
-              baseg[Math.floor(Math.random() * baseg.length)]
-            } calma la patrao Baseg`
-          );
-        }
-      })();
+    if(available && $message.includes("@taurediano")) {
+        (async () => {
+          try {
+            available = false;
+            client.say(
+              channel,
+              `${tags.username}, Baseg ${await generator.generate($message)} Baseg`
+            );
+            setTimeout(() => {
+              available = true;
+            }, 5000);
+          } catch (err) {
+            console.log(err);
+            client.say(
+              channel,
+              `${tags.username}, Baseg ${
+                baseg[Math.floor(Math.random() * baseg.length)]
+              } calma la patrao Baseg`
+            );
+          }
+        })();
     }
   
     if ($message.includes("reset")) {
