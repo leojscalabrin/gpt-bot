@@ -159,9 +159,3 @@ client.on("message", (channel, tags, message, self) => {
     })();
   }
 });
-
-function preventAFK() {
-  console.log("WAKE ME UP")
-}
-
-setInterval(preventAFK, 300000)
