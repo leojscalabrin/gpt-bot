@@ -29,13 +29,11 @@ const client = new tmi.Client({
 
 client.connect();
 
-let cooldown = true;
 let executed = false;
 
 //roda sempre que uma mensagem for enviada no chat
 client.on("message", (channel, tags, message, self) => {
   if (!executed) {
-    if (cooldown) {
       if (self) {
         return;
       }
@@ -158,11 +156,10 @@ client.on("message", (channel, tags, message, self) => {
         })();
       }
   
-      setTimeout(() => {
-        cooldown = true;
-      }, cooldownTimer);
-  
-    }
     executed = true;
   }
 });
+
+setTimeout(() => {
+  executed = false;
+}, 5000);
