@@ -159,7 +159,7 @@ client.on("message", (channel, tags, message, self) => {
     }
 
     setTimeout(() => {
-      cooldown = true;
+      available = true;
       console.log("AVAILABLE TRUE")
     }, cooldown);
   }
