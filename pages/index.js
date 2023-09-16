@@ -38,11 +38,6 @@ client.on("message", (channel, tags, message, self) => {
       return;
     }
 
-    const cooldown = 5000;
-    console.log("RODOU")
-    available = false;
-    console.log("AVAILABLE FALSE")
-
     const baseg = [
       "👍",
       "🔪",
@@ -157,6 +152,11 @@ client.on("message", (channel, tags, message, self) => {
         }
       })();
     }
+
+    const cooldown = 5000;
+    console.log("RODOU")
+    available = false;
+    console.log("AVAILABLE FALSE")
 
     setTimeout(() => {
       available = true;
