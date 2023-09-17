@@ -1,6 +1,6 @@
 const generator = require("./textGenerator");
 const { pokeApi } = require("./poke-api.js");
-const job = require("./cron")
+const { job } = require("./cron.js")
 require("dotenv").config({ path: "../.env" });
 const tmi = require("tmi.js");
 //login na twitch e join nos canais
