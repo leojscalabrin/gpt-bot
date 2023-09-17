@@ -1,6 +1,5 @@
 const generator = require("./textGenerator");
 const { pokeApi } = require("./poke-api.js");
-const { job } = require("./cron.js")
 require("dotenv").config({ path: "../.env" });
 const tmi = require("tmi.js");
 //login na twitch e join nos canais
@@ -29,7 +28,6 @@ const client = new tmi.Client({
 });
 
 client.connect();
-job.start();
 
 //roda sempre que uma mensagem for enviada no chat
 client.on("message", (channel, tags, message, self) => {
