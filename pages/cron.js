@@ -1,7 +1,7 @@
 const cron = require("cron");
 const https = require("https");
 
-const backendUrl = "provide_backend_api_endpoint_that_is_provided_by_rendor";
+const backendUrl = process.env.BACKEND_URL;
 const job = new cron.CronJob("*/14 * * * *", function () {
   console.log("Restarting server");
 
