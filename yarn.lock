@@ -53,6 +53,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/luxon@~3.3.0":
+  version "3.3.2"
+  resolved "https://registry.npmjs.org/@types/luxon/-/luxon-3.3.2.tgz"
+  integrity sha512-l5cpE57br4BIjK+9BSkFBOsWtwv6J9bJpC7gdXIzZyI0vuKvNTk0wZZrkQxMGsUAuGW9+WMNWF2IJMD7br2yeQ==
+
 "@types/node@*":
   version "20.4.7"
   resolved "https://registry.npmjs.org/@types/node/-/node-20.4.7.tgz"
@@ -186,6 +191,14 @@ core-util-is@1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz"
   integrity sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==
+
+cron@^2.4.3:
+  version "2.4.3"
+  resolved "https://registry.npmjs.org/cron/-/cron-2.4.3.tgz"
+  integrity sha512-YBvExkQYF7w0PxyeFLRyr817YVDhGxaCi5/uRRMqa4aWD3IFKRd+uNbpW1VWMdqQy8PZ7CElc+accXJcauPKzQ==
+  dependencies:
+    "@types/luxon" "~3.3.0"
+    luxon "~3.3.0"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -413,6 +426,11 @@ lowercase-keys@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/lowercase-keys/-/lowercase-keys-2.0.0.tgz"
   integrity sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==
+
+luxon@~3.3.0:
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/luxon/-/luxon-3.3.0.tgz"
+  integrity sha512-An0UCfG/rSiqtAIiBPO0Y9/zAnHUZxAMiCpTd5h2smgsj7GGmcenvrvww2cqNA8/4A5ZrD1gJpHN2mIHZQF+Mg==
 
 mime-db@1.52.0:
   version "1.52.0"
