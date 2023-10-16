@@ -1,4 +1,5 @@
 const generator = require("./textGenerator");
+const cadavreExquis = require("./cadaverEsquisito")
 const { pokeApi } = require("./poke-api.js");
 require("dotenv").config({ path: "../.env" });
 const tmi = require("tmi.js");
@@ -13,17 +14,7 @@ const client = new tmi.Client({
     username: "taurediano",
     password: process.env.TWITCH_OAUTH_TOKEN,
   },
-  channels: [
-    "taurediano",
-    "k1notv",
-    "themalkavianx",
-    "granjas",
-    "bard0oo0",
-    "blacksmith_god",
-    "marjoux",
-    "xparchon",
-    "zeszin",
-  ],
+  channels: ["taurediano", "k1notv", "bard0oo0", "blacksmith_god", "xparchon"],
   // channels: ["taurediano"],
 });
 
@@ -98,33 +89,26 @@ client.on("message", (channel, tags, message, self) => {
       `Baseg ${baseg[Math.floor(Math.random() * baseg.length)]}`
     );
   }
+  // Responder com mensagem gerado pela OpenAI
+  // if ($message.includes("@taurediano")) {
+  //   (async () => {
+  //     try {
+  //       client.say(
+  //         channel,
+  //         `${tags.username}, Baseg ${await generator.generate($message)} Baseg`
+  //       );
+  //     } catch (err) {
+  //       console.log(err);
 
-  if ($message.includes("@taurediano")) {
-    let messageSent = false;
-  
-    (async () => {
-      try {
-        if (!messageSent) {
-          messageSent = true;
-          client.say(
-            channel,
-            `${tags.username}, Baseg ${await generator.generate($message)} Baseg`
-          );
-        }
-      } catch (err) {
-        console.log(err);
-        if (!messageSent) { 
-          messageSent = true;
-          client.say(
-            channel,
-            `${tags.username}, Baseg ${
-              baseg[Math.floor(Math.random() * baseg.length)]
-            } calma la patrao Baseg`
-          );
-        }
-      }
-    })();
-  }
+  //       client.say(
+  //         channel,
+  //         `${tags.username}, Baseg ${
+  //           baseg[Math.floor(Math.random() * baseg.length)]
+  //         } calma la patrao Baseg`
+  //       );
+  //     }
+  //   })();
+  // }
 
   if ($message.includes("reset")) {
     client.say(channel, "Reset pepeLaugh");
@@ -157,5 +141,26 @@ client.on("message", (channel, tags, message, self) => {
         );
       }
     })();
+  }
+
+  if ($message.startsWith("!cadaver")) {
+    const command = msgSplit($message)
+    (async () => {
+          try {
+            client.say(
+              channel,
+              `${tags.username}, Baseg ${await cadavreExquis.cadaverEsquisito(command)} Baseg`
+            );
+          } catch (err) {
+            console.log(err);
+    
+            client.say(
+              channel,
+              `${tags.username}, Baseg ${
+                baseg[Math.floor(Math.random() * baseg.length)]
+              } deu ruim patrao Baseg`
+            );
+          }
+        })();
   }
 });
