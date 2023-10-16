@@ -147,23 +147,14 @@ client.on("message", (channel, tags, message, self) => {
     const command = msgSplit($message).split(" ")[0];
     (async () => {
       try {
-        if ((command.length = 0)) {
-          client.say(
-            channel,
-            `${
-              tags.username
-            }, Baseg Em Taured, ${await cadavreExquis.cadaverEsquisito()} Baseg`
-          );
-        } else {
-          client.say(
-            channel,
-            `${
-              tags.username
-            }, Baseg Em Taured, ${await cadavreExquis.cadaverEsquisito(
-              command
-            )} Baseg`
-          );
-        }
+        client.say(
+          channel,
+          `${
+            tags.username
+          }, Baseg Em Taured, ${await cadavreExquis.cadaverEsquisito(
+            command
+          )}`
+        );
       } catch (err) {
         console.log(err);
 
@@ -171,7 +162,7 @@ client.on("message", (channel, tags, message, self) => {
           channel,
           `${tags.username}, Baseg ${
             baseg[Math.floor(Math.random() * baseg.length)]
-          } deu ruim patrao Baseg`
+          } deu ruim patrao`
         );
       }
     })();
