@@ -1,5 +1,5 @@
 const generator = require("./textGenerator");
-const cadavreExquis = require("./cadaverEsquisito")
+const cadavreExquis = require("./cadaverEsquisito");
 const { pokeApi } = require("./poke-api.js");
 require("dotenv").config({ path: "../.env" });
 const tmi = require("tmi.js");
@@ -144,23 +144,26 @@ client.on("message", (channel, tags, message, self) => {
   }
 
   if ($message.startsWith("!cadaver")) {
-    const command = msgSplit($message)
+    const command = msgSplit($message).split(' ')[0];
+
     (async () => {
-          try {
-            client.say(
-              channel,
-              `${tags.username}, Baseg ${await cadavreExquis.cadaverEsquisito(command)} Baseg`
-            );
-          } catch (err) {
-            console.log(err);
-    
-            client.say(
-              channel,
-              `${tags.username}, Baseg ${
-                baseg[Math.floor(Math.random() * baseg.length)]
-              } deu ruim patrao Baseg`
-            );
-          }
-        })();
+      try {
+        client.say(
+          channel,
+          `${tags.username}, Baseg ${await cadavreExquis.cadaverEsquisito(
+            command
+          )} Baseg`
+        );
+      } catch (err) {
+        console.log(err);
+
+        client.say(
+          channel,
+          `${tags.username}, Baseg ${
+            baseg[Math.floor(Math.random() * baseg.length)]
+          } deu ruim patrao Baseg`
+        );
+      }
+    })();
   }
 });
