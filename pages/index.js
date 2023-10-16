@@ -144,16 +144,26 @@ client.on("message", (channel, tags, message, self) => {
   }
 
   if ($message.startsWith("!cadaver")) {
-    const command = msgSplit($message).split(' ')[0];
-
+    const command = msgSplit($message).split(" ")[0];
     (async () => {
       try {
-        client.say(
-          channel,
-          `${tags.username}, Baseg Em Taured, ${await cadavreExquis.cadaverEsquisito(
-            command
-          )} Baseg`
-        );
+        if ((command.length = 0)) {
+          client.say(
+            channel,
+            `${
+              tags.username
+            }, Baseg Em Taured, ${await cadavreExquis.cadaverEsquisito()} Baseg`
+          );
+        } else {
+          client.say(
+            channel,
+            `${
+              tags.username
+            }, Baseg Em Taured, ${await cadavreExquis.cadaverEsquisito(
+              command
+            )} Baseg`
+          );
+        }
       } catch (err) {
         console.log(err);
 
