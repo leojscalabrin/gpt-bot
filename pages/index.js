@@ -150,7 +150,7 @@ client.on("message", (channel, tags, message, self) => {
       try {
         client.say(
           channel,
-          `${tags.username}, Baseg ${await cadavreExquis.cadaverEsquisito(
+          `${tags.username}, Baseg Em Taured, ${await cadavreExquis.cadaverEsquisito(
             command
           )} Baseg`
         );
