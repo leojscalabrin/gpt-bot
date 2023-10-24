@@ -1,3 +1,22 @@
+# Twitch Bot
+Criado como hobby com algumas funcionalidades em comando para chat da twitch.
+Rodar 'node index.js' dentro da pasta pages para manter o bot rodando localmente.
+
+Adicionar as chaves necessárias no .env como TWITCH_OAUTH_TOKEN para rodar o bot na twitch
+e OPENAI_API_KEY para usar a função de geração de texto.
+
+## !dice
+Comando básico que retorna um número de 1 a 6 de um dado para o usuário.
+## !pokekon {nome ou id}
+Retorna algumas informações sobre um pokemon de acordo com o nome ou id da pokedex passado.
+## !cadaver
+Retorna uma frase aleatória gerada de acordo com as regras do jogo do Cadáver Esquisito.
+Pode ser passado também um parâmetro "!cadaver {palavra}" para que substitua o primeiro substantivo da frase.
+## Menção ao bot
+Mencionar o nome do bot na twitch com uma mensagem fará com que ele responda com uma frase gerada através da openAI API.
+O behavior do bot pode ser alterado no textGenerator.js na role "system"
+
+
 # OpenAI API Quickstart - Node.js example app
 This is a twitch bot integrated with openAI API for personal uses.
 
